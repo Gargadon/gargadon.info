@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col">
+    <h1 class="text-center">{{title}}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <form action="">
+      <div class="mb-3">
+        <label for="Nombre" class="form-label">Nombre</label>
+        <input type="text" name="nombre" id="Nombre" class="form-control" [(ngModel)]="cuadroNombre">
+      </div>
+      <div class="mb-3">
+        <label for="Apellido" class="form-label">Apellido</label>
+        <input type="text" name="apellido" id="Apellido" class="form-control" [(ngModel)]="cuadroApellido">
+      </div>
+      <div class="mb-3">
+        <label for="Cargo" class="form-label">Cargo</label>
+        <input type="text" name="cargo" id="Cargo" class="form-control" [(ngModel)]="cuadroCargo">
+      </div>
+      <div class="mb-3">
+        <label for="Salario" class="form-label">Salario</label>
+        <input type="number" name="salario" id="salario" class="form-control" [(ngModel)]="cuadroSalario">
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success" (click)="accionEmpleado()">Acción</button>
+        <!-- <button class="btn btn-danger" (click)="eliminaEmpleado()">Eliminar</button> -->
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col"><button class="btn btn-primary" (click)="volverHome()">Volver</button></div>
+</div>

@@ -1,0 +1,22 @@
+    <div class="row">
+      <div class="col-1">{{indice+1}}</div>
+      <div class="col-2">{{empleadoLista.nombre}}</div>
+      <div class="col-2">{{empleadoLista.apellido}}</div>
+      <div class="col-3">{{empleadoLista.cargo}}</div>
+      <div class="col-2">{{empleadoLista.salario}}</div>
+      <div class="col-1"><a [routerLink]="['/proyectos/empleados/actualiza',indice+1]" [queryParams]="{action:'1'}"><i class="bi bi-pencil"></i></a></div>
+      <div class="col-1"><a [routerLink]="['/proyectos/empleados/actualiza',indice+1]" [queryParams]="{action:'2'}"><i class="bi bi-trash"></i></a></div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <app-caracteristicas-empleado-componente (caracteristicasEmpleados)="agregarCaracteristica($event)"></app-caracteristicas-empleado-componente>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <ul>
+          <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
+        </ul>
+      </div>
+    </div>
+    

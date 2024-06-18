@@ -1,0 +1,37 @@
+<div class="row" *ngIf="bandera == true" ngDefaultControl>
+    <div class="col-12 text-center alert alert-success" role="alert" *ngIf="ganador == 1" ngDefaultControl><strong>¡El
+            jugador 1 es el ganador!</strong></div>
+    <div class="col-12 text-center alert alert-success" role="alert" *ngIf="ganador == 2" ngDefaultControl><strong>¡El
+            jugador 2 es el ganador!</strong></div>
+    <div class="col-12 text-center alert alert-warning" role="alert" *ngIf="ganador == 3" ngDefaultControl><strong>¡Hubo
+            un empate!</strong></div>
+    <div class="col-12 text-center"><button class="btn btn-danger" (click)="reiniciar()">Reiniciar juego</button></div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-5 text-center"><strong>Jugador 1</strong><h4 ng-class="ganadas1">{{ganadas1}}</h4></div>
+    <div class="col-5 text-center"><strong>Jugador 2</strong><h4 ng-class="ganadas2">{{ganadas2}}</h4></div>
+    <div class="col-5 text-center">
+        <button class="btn btn-primary" [(ngModel)]="dado1" (click)="numero1()" *ngIf="dado1==0" ngDefaultControl>Tirar
+            dado</button>
+            <span [ngSwitch]="dado1">
+                <span *ngSwitchCase="1"><img src="./assets/dice/1.png" class="img-fluid" alt="1"></span>
+                <span *ngSwitchCase="2"><img src="./assets/dice/2.png" class="img-fluid" alt="2"></span>
+                <span *ngSwitchCase="3"><img src="./assets/dice/3.png" class="img-fluid" alt="3"></span>
+                <span *ngSwitchCase="4"><img src="./assets/dice/4.png" class="img-fluid" alt="4"></span>
+                <span *ngSwitchCase="5"><img src="./assets/dice/5.png" class="img-fluid" alt="5"></span>
+                <span *ngSwitchCase="6"><img src="./assets/dice/6.png" class="img-fluid" alt="6"></span>
+            </span>
+     </div>
+    <div class="col-5 text-center">
+        <button class="btn btn-primary" [(ngModel)]="dado2" (click)="numero2()" *ngIf="dado2==0" ngDefaultControl>Tirar
+            dado</button>
+            <span [ngSwitch]="dado2">
+                <span *ngSwitchCase="1"><img src="./assets/dice/1.png" class="img-fluid" alt="1"></span>
+                <span *ngSwitchCase="2"><img src="./assets/dice/2.png" class="img-fluid" alt="2"></span>
+                <span *ngSwitchCase="3"><img src="./assets/dice/3.png" class="img-fluid" alt="3"></span>
+                <span *ngSwitchCase="4"><img src="./assets/dice/4.png" class="img-fluid" alt="4"></span>
+                <span *ngSwitchCase="5"><img src="./assets/dice/5.png" class="img-fluid" alt="5"></span>
+                <span *ngSwitchCase="6"><img src="./assets/dice/6.png" class="img-fluid" alt="6"></span>
+            </span>
+    </div>
+</div>
