@@ -24,7 +24,8 @@ import { DiceComponent } from './proyectos/dice/dice.component';
 import { Login2Component } from './proyectos/login/login.component';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { CookieService } from 'ngx-cookie-service';
+import { SsrCookieService } from 'ngx-cookie-service-ssr';
+import { LogoutComponent } from './logout/logout.component';
 
 
 var titulo = "Gargadon's Dungeon :: "
@@ -32,6 +33,7 @@ var titulo = "Gargadon's Dungeon :: "
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent, title: titulo + "Página Principal" },
   { path: 'login', component: LoginComponent, title: titulo + "Iniciar sesión" },
+  { path: 'logout', component: LogoutComponent, title: titulo + "Cerrar sesión" },
   {
     path: 'proyectos', component: ProyectosComponent, title: titulo + "Proyectos",
     children: [
@@ -80,7 +82,8 @@ const appRoutes: Routes = [
     FooterComponent,
     DiceComponent,
     LoginComponent,
-    Login2Component
+    Login2Component,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), CookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration()],
+  providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), SsrCookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

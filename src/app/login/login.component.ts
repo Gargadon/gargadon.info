@@ -19,9 +19,10 @@ export class LoginComponent {
     this.userService.login(user).subscribe(
       data => {
         this.userService.setToken(data.token);
-        this.router.navigateByUrl('/').then(() => {
-          window.location.reload();
-        });
+        setTimeout(() => {
+          this.userService.redirToIndex();
+        },
+          500);
       },
       error => {
         console.log(error);

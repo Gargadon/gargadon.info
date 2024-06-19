@@ -12,10 +12,6 @@ export class NavbarComponent implements OnInit {
 
   logueado: any;
 
-  logout() {
-    this.usersService.logout();
-  }
-
   async ngOnInit() {
     this.logueado = await this.usersService.isUserLogged();
   }

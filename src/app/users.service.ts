@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
+import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 export class UsersService {
 
-  constructor(private http: HttpClient, private cookies: CookieService, private router: Router) { }
+  constructor(private http: HttpClient, private cookies: SsrCookieService, private router: Router) { }
 
   logueado: boolean;
 
@@ -19,7 +19,9 @@ export class UsersService {
   }
 
   setToken(token: string) {
-    this.cookies.set("token", token);
+    var expiredDate = new Date();
+    expiredDate.setDate(expiredDate.getDate() + 7);
+    this.cookies.set("token", token, { expires: expiredDate, sameSite: 'Lax' });
   }
 
   getToken() {
@@ -37,15 +39,14 @@ export class UsersService {
     return this.http.post("https://www.gargadon.info/api/is_logged.php", token);
   }
 
-  getUser() {
-    return this.http.get("https://www.gargadon.info/api/user.php?id=1");
+  async getUser() {
+    var source$ = this.isLogged(this.getToken());
+    var finalNumber = await lastValueFrom(source$);
+    return finalNumber;
   }
 
   logout() {
     this.cookies.delete("token");
-    this.router.navigateByUrl('/').then(() => {
-      window.location.reload();
-    });
   }
 
   async isUserLogged() {
@@ -56,6 +57,12 @@ export class UsersService {
 
   reloadPage() {
     window.location.reload();
+  }
+
+  redirToIndex() {
+    this.router.navigateByUrl('/').then(() => {
+      window.location.reload();
+    });
   }
 
 }

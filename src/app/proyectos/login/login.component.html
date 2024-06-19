@@ -9,10 +9,40 @@
 <ul>
     <li>Si ingresas con las credenciales correctas, el último elemento del navbar debió cambiar de <em>Login</em> a
         <em>Logout</em>.
+        <img src="./assets/img/navbar-logout.png" alt="¿Ya te logueaste?" class="img-fluid">
     </li>
     <li>Con cualquier otra combinación de credenciales, el último elemento del navbar se mantendrá como <em>Login</em>
         ya que no hay otra combinación válida de credenciales.
     </li>
+    <li>Deberías ver tu información a continuación:</li>
+    <span [ngSwitch]="logueado">
+        <span *ngSwitchCase="true">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre de usuario</th>
+                        <th>Correo electrónico</th>
+                        <th>Avatar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">{{userID}}</td>
+                        <td>{{userName}}</td>
+                        <td>{{userMail}}</td>
+                        <td class="text-center"><img [src]="avatarUser" class="img-thumbnail" style="width:200px"
+                                alt="Avatar"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </span>
+        <span *ngSwitchCase="false">
+            <div class="alert alert-warning" role="alert">
+                No estás logueado.
+            </div>
+        </span>
+    </span>
+
 </ul>
-<img src="./assets/img/navbar-logout.png" alt="¿Ya te logueaste?" class="img-fluid">
 <p class="lead text-center">El secreto está en las APIs...</p>

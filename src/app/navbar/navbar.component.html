@@ -23,7 +23,7 @@
         <li class="nav-item">
           <span [ngSwitch]="logueado">
             <span *ngSwitchCase="false"><a class="nav-link" [routerLink]="['/login']">Login</a></span>
-            <span *ngSwitchCase="true"><a class="nav-link" [routerLink]="['/']" (click)="logout()">Logout</a></span>
+            <span *ngSwitchCase="true"><a class="nav-link" [routerLink]="['/logout']">Logout</a></span>
           </span>
         </li>
       </ul>
