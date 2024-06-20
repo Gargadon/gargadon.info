@@ -18,6 +18,16 @@
               placeholder="Password" [(ngModel)]="password">
           </div>
         </div>
+        <span [ngSwitch]="valido">
+          <span *ngSwitchCase="true"><div class="alert alert-success" role="alert">
+            Se ha logueado correctamente. Redirigiendo a la página principal...
+          </div></span>
+          <span *ngSwitchCase="false">
+            <div class="alert alert-danger" role="alert">
+              Credenciales incorrectas. Revise los datos e intente de nuevo.
+            </div>
+          </span>
+        </span>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary" (click)="login()">Iniciar sesión</button>

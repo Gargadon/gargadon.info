@@ -19,7 +19,7 @@ export class LogoutComponent implements OnInit {
     setTimeout(() => {
       this.usersService.redirToIndex();
     },
-      500);
+      800);
   }
 
 }

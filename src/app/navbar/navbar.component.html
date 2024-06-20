@@ -23,11 +23,12 @@
         <li class="nav-item">
           <span [ngSwitch]="logueado">
             <span *ngSwitchCase="true">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [routerLink]="['/logout']">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                [routerLink]="['/logout']">
                 Logout
               </button>
             </span>
-            <span *ngSwitchCase="false">
+            <span *ngSwitchDefault>
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Login
               </button>

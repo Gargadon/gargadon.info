@@ -16,6 +16,10 @@ export class UsersService {
 
   login(user: any): Observable<any> {
     return this.http.post("https://www.gargadon.info/api/login.php", user);
+    if(this.getToken()) {
+      this.logueado = true;
+      console.log(this.logueado);
+    }
   }
 
   setToken(token: string) {
@@ -45,8 +49,8 @@ export class UsersService {
     return finalNumber;
   }
 
-  logout() {
-    this.cookies.delete("token");
+  async logout() {
+    this.cookies.set("token", "", { expires: new Date('Thu, 01 Jan 1970 00:00:01 GMT'), sameSite: 'Lax' });
   }
 
   async isUserLogged() {
