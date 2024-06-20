@@ -32,7 +32,6 @@ var titulo = "Gargadon's Dungeon :: "
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent, title: titulo + "Página Principal" },
-  { path: 'login', component: LoginComponent, title: titulo + "Iniciar sesión" },
   { path: 'logout', component: LogoutComponent, title: titulo + "Cerrar sesión" },
   {
     path: 'proyectos', component: ProyectosComponent, title: titulo + "Proyectos",
@@ -63,7 +62,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'about-me', component: AboutMeComponent, title: titulo + "Acerca de mí" },
-  { path: '**', component: ErrorComponent, title: titulo + "Error 404" }
+  { path: '**', component: ErrorComponent, title: titulo + "Página no encontrada" }
 ];
 
 @NgModule({

@@ -22,11 +22,40 @@
         </li>
         <li class="nav-item">
           <span [ngSwitch]="logueado">
-            <span *ngSwitchCase="false"><a class="nav-link" [routerLink]="['/login']">Login</a></span>
-            <span *ngSwitchCase="true"><a class="nav-link" [routerLink]="['/logout']">Logout</a></span>
+            <span *ngSwitchCase="true">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [routerLink]="['/logout']">
+                Logout
+              </button>
+            </span>
+            <span *ngSwitchCase="false">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Login
+              </button>
+            </span>
           </span>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <span [ngSwitch]="logueado">
+        <span *ngSwitchCase="false"><app-login></app-login></span>
+        <span *ngSwitchCase="true">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Cerrar sesión</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-info" role="alert">
+              Cerrando sesión...
+            </div>
+          </div>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

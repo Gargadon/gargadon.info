@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../users.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login2',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
