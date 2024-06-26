@@ -24,6 +24,6 @@ export class HomeComponentComponent implements OnInit{
     this.metaService.updateTag({ property: "og:title", content: "Gargadon's Dungeon :: " + this.title });
     this.metaService.updateTag({ property: "og:type", content: "website" });
     this.metaService.updateTag({ property: "og:url", content: "https://www.gargadon.info/" });
-    this.metaService.updateTag({ property: "og:image", content: "https://www.gargadon.info/assets/img/musashi_mochi.png" });
+    this.metaService.updateTag({ property: "og:image", content: "https://www.gargadon.info/assets/img/musashi_mochi.webp" });
   }
 }
