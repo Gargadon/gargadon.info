@@ -22,11 +22,12 @@ import { MainComponent } from './proyectos/main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { DiceComponent } from './proyectos/dice/dice.component';
 import { Login2Component } from './proyectos/login/login.component';
-import { HttpClient,  provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { LogoutComponent } from './logout/logout.component';
-
+import { MarkdownModule } from 'ngx-markdown';
+import { EntryComponent } from './entry/entry.component';
 
 var titulo = "Gargadon's Dungeon :: "
 
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'about-me', component: AboutMeComponent, title: titulo + "Acerca de mí" },
+  { path: 'entry', component: EntryComponent},
   { path: '**', component: ErrorComponent, title: titulo + "Página no encontrada" }
 ];
 
@@ -82,13 +84,15 @@ const appRoutes: Routes = [
     DiceComponent,
     LoginComponent,
     Login2Component,
-    LogoutComponent
+    LogoutComponent,
+    EntryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MarkdownModule.forRoot()
   ],
   providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), SsrCookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration(withNoHttpTransferCache())],
   bootstrap: [AppComponent]
