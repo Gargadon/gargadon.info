@@ -6,28 +6,11 @@
 
 <div class="row mt-4">
   <div class="col-md-8">
-    <article style="margin-bottom: 4rem;">
-      <h3 class="display-6 link-body-emphasis mb-1">Estrenando nueva página</h3>
-      <p class="text-body-secondary">29 de mayo de 2024 por <a [routerLink]="['/about-me']">David Kantun</a></p>
 
-      <p>Me alegra estrenar nueva página. Esta vez sin utilizar algún CMS como WordPress, sino escrito desde
-        cero.
-      </p>
-      <p>De momento, esta entrada es un placeholder, por lo que estará presente por un largo tiempo en la
-        página principal hasta que finalmente pueda ser un blog semifuncional.
-      </p>
-      <p>Tal vez se habrán dado cuenta de que hay algunos enlaces rotos y eso. Es normal, todavía no termino
-        de realizar este sitio web, aún me faltan muchas cosas para añadir y otras más por aprender.
-      </p>
-      <p>Sin más por el momento, me despido de ustedes.</p>
-    </article>
-
-    <article style="margin-bottom: 4rem;">
-      <h3 class="display-6 link-body-emphasis mb-1">Iniciando una nueva etapa</h3>
-      <p class="text-body-secondary">20 de mayo de 2024 por <a [routerLink]="['/about-me']">David Kantun</a></p>
-
-      <p>¿Qué nos deparará este futuro? La verdad no lo sé.</p>
-      <p>Solo puedo seguir confiado. Porque no tengo otra opción.</p>
+    <article style="margin-bottom: 4rem;" *ngFor="let entrada of entradas">
+      <h3 class="display-6 link-body-emphasis mb-1">{{entrada.title}}</h3>
+      <p class="text-body-secondary">{{entrada.date}} por <a [routerLink]="['/about-me']">{{entrada.username}}</a></p>
+      <markdown ngPreserveWhitespaces [disableSanitizer]="true" [data]="entrada.content"></markdown>
     </article>
   </div>
 

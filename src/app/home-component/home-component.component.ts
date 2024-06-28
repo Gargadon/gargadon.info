@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-home-component',
@@ -8,14 +10,19 @@ import { Meta } from '@angular/platform-browser';
 })
 export class HomeComponentComponent implements OnInit{
 
-  ngOnInit(): void {
-
-  }
 
   title = "Página principal";
+  url = "https://www.gargadon.info/api/entry.php";
+  entradas: any;
 
-  constructor(private metaService: Meta) {
+  constructor(private metaService: Meta, private entries: HttpClient) {
     this.updateTag();
+  }
+  
+  ngOnInit() {
+    this.entries.get(this.url).subscribe(res => {
+      this.entradas = res;
+    });
   }
 
   updateTag() {

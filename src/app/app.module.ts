@@ -26,6 +26,7 @@ import { HttpClient, provideHttpClient, withInterceptorsFromDi, withFetch } from
 import { LoginComponent } from './login/login.component';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { LogoutComponent } from './logout/logout.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 var titulo = "Gargadon's Dungeon :: "
@@ -88,7 +89,8 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MarkdownModule.forRoot()
   ],
   providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), SsrCookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration()],
   bootstrap: [AppComponent]
