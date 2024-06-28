@@ -18,8 +18,9 @@ export class LoginComponent {
   login() {
     this.valido = null;
     const user = { email: this.email, password: this.password };
-    this.userService.login(user).subscribe(
-      data => {
+
+    this.userService.login(user).subscribe({
+      next: (data) => {
         this.userService.setToken(data.token);
         if(this.userService.getTokenText() != 'undefined') {
           this.valido = true;
@@ -32,10 +33,12 @@ export class LoginComponent {
           this.valido = false;
         }
       },
-      error => {
-        console.log(error);
+      error: (e) => {
+        console.log(e);
         this.userService.logueado = false;
-      });
+      }
+    });
+
   }
 
 }
