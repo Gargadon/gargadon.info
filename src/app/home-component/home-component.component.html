@@ -8,7 +8,7 @@
   <div class="col-md-8">
     <ng-container *ngIf="!isServer">
       <article style="margin-bottom: 4rem" *ngFor="let entrada of entradas">
-        <h3 class="display-6 link-body-emphasis mb-1">{{ entrada.title }}</h3>
+        <h3 class="display-6 link-body-emphasis mb-1"><a [routerLink]="['/entry']" [queryParams]="{id: entrada.id}">{{ entrada.title }}</a></h3>
         <p class="text-body-secondary">
           {{ entrada.date }} por
           <a [routerLink]="['/about-me']">{{ entrada.username }}</a>

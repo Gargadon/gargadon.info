@@ -1,0 +1,39 @@
+<div class="row mt-4">
+  <div class="col-md-8">
+    <ng-container *ngIf="!isServer">
+      <article style="margin-bottom: 4rem">
+        <h3 class="display-6 link-body-emphasis mb-1">
+          <a
+            [routerLink]="['/entry']"
+            [queryParams]="{ id: entrada?.[0]?.id }"
+            >{{
+              entrada?.[0]?.title
+            }}</a
+          >
+        </h3>
+        <p class="text-body-secondary">
+          {{ entrada?.[0]?.date }} por
+          <a [routerLink]="['/about-me']">{{ entrada?.[0]?.username }}</a>
+        </p>
+        <markdown
+          ngPreserveWhitespaces
+          [disableSanitizer]="true"
+          [data]="entrada?.[0]?.content"
+        ></markdown></article
+    ></ng-container>
+  </div>
+
+  <div class="col-md-4">
+    <div class="position-sticky" style="top: 2rem">
+      <div class="p-4 mb-3 bg-body-tertiary rounded">
+        <h4 class="fst-italic">{{entrada?.[0]?.username}}</h4>
+        <img
+          [src]="entrada?.[0]?.avatar"
+          class="img-thumbnail"
+          style="width: 200px"
+          alt="Avatar de {{entrada?.[0]?.username}}"
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -27,7 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { LogoutComponent } from './logout/logout.component';
 import { MarkdownModule } from 'ngx-markdown';
-
+import { EntryComponent } from './entry/entry.component';
 
 var titulo = "Gargadon's Dungeon :: "
 
@@ -63,6 +63,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'about-me', component: AboutMeComponent, title: titulo + "Acerca de mí" },
+  { path: 'entry', component: EntryComponent},
   { path: '**', component: ErrorComponent, title: titulo + "Página no encontrada" }
 ];
 
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     DiceComponent,
     LoginComponent,
     Login2Component,
-    LogoutComponent
+    LogoutComponent,
+    EntryComponent
   ],
   imports: [
     BrowserModule,

@@ -15,4 +15,8 @@ export class EntriesService {
   recibirEntradas(): Observable<any[]>{
     return this.httpClient.get<any[]>(this.apiUrl);
   }
+
+  recibirEntradaSingular(id:number): Observable<any> {
+    return this.httpClient.get<any>(this.apiUrl + '?id=' + id);
+  }
 }
