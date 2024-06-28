@@ -1,21 +1,28 @@
 <div class="row">
   <div class="col">
-    <h1 class="text-center">{{title}}</h1>
+    <h1 class="text-center">{{ title }}</h1>
   </div>
 </div>
 
 <div class="row mt-4">
   <div class="col-md-8">
-
-    <article style="margin-bottom: 4rem;" *ngFor="let entrada of entradas">
-      <h3 class="display-6 link-body-emphasis mb-1">{{entrada.title}}</h3>
-      <p class="text-body-secondary">{{entrada.date}} por <a [routerLink]="['/about-me']">{{entrada.username}}</a></p>
-      <markdown ngPreserveWhitespaces [disableSanitizer]="true" [data]="entrada.content"></markdown>
-    </article>
+    <ng-container *ngIf="!isServer">
+      <article style="margin-bottom: 4rem" *ngFor="let entrada of entradas">
+        <h3 class="display-6 link-body-emphasis mb-1">{{ entrada.title }}</h3>
+        <p class="text-body-secondary">
+          {{ entrada.date }} por
+          <a [routerLink]="['/about-me']">{{ entrada.username }}</a>
+        </p>
+        <markdown
+          ngPreserveWhitespaces
+          [disableSanitizer]="true"
+          [data]="entrada.content"
+        ></markdown></article
+    ></ng-container>
   </div>
 
   <div class="col-md-4">
-    <div class="position-sticky" style="top: 2rem;">
+    <div class="position-sticky" style="top: 2rem">
       <div class="p-4 mb-3 bg-body-tertiary rounded">
         <h4 class="fst-italic">Sobre este sitio</h4>
         <p class="mb-0">En construcción.</p>

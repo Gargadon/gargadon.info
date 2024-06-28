@@ -1,8 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Empleado } from "./empleado.model";
-import { response } from "express";
-import { error } from "console";
 
 @Injectable()
 export class DataServices{

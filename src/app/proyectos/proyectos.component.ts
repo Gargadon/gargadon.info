@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 
 
@@ -8,12 +9,15 @@ import { Meta } from '@angular/platform-browser';
   styleUrl: './proyectos.component.css'
 })
 export class ProyectosComponent implements OnInit{
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.updateTag();
+   }
 
   title="Proyectos";
+  isServer = isPlatformServer(this.platformId);
 
-  constructor(private metaService: Meta) {
-    this.updateTag();
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private metaService: Meta) {
+    
   }
 
   updateTag() {

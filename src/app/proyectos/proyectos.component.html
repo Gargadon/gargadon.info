@@ -23,6 +23,6 @@
 </ul>
 <div class="row ">
   <div class="col p-3">
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="!isServer"></router-outlet>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration, withNoHttpTransferCache } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +22,7 @@ import { MainComponent } from './proyectos/main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { DiceComponent } from './proyectos/dice/dice.component';
 import { Login2Component } from './proyectos/login/login.component';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { LogoutComponent } from './logout/logout.component';
@@ -92,7 +92,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MarkdownModule.forRoot()
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), SsrCookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration()],
+  providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), SsrCookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration(withNoHttpTransferCache())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
