@@ -37,16 +37,12 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "node_modules/prismjs/themes/prism-okaidia.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/prismjs/prism.js",
-              "node_modules/prismjs/components/prism-javascript.min.js",
-              "node_modules/prismjs/components/prism-css.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -111,16 +107,12 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "node_modules/prismjs/themes/prism-okaidia.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/prismjs/prism.js",
-              "node_modules/prismjs/components/prism-javascript.min.js",
-              "node_modules/prismjs/components/prism-css.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           }
         }
