@@ -22,7 +22,7 @@ import { MainComponent } from './proyectos/main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { DiceComponent } from './proyectos/dice/dice.component';
 import { Login2Component } from './proyectos/login/login.component';
-import { provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
+import { HttpClient,  provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { LogoutComponent } from './logout/logout.component';

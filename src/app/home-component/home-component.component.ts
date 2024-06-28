@@ -15,12 +15,12 @@ export class HomeComponentComponent implements OnInit {
   title = "Página principal";
   entradas: any[];
 
-
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private metaService: Meta, private entries: EntriesService, private markdownService: MarkdownService) {
-    this.entries.recibirEntradas().subscribe(
-      data => this.entradas = data,
-      error => console.error(error)
-    );
+    this.entries.recibirEntradas().subscribe({
+      next: (data) => {this.entradas = data},
+      error: (e) => console.error(e)
+    })
+
     this.markdownService.renderer.image = (src: string, alt: string) => {
       return '<img src="' + src + '" alt="' + alt + '" style="max-width:100%">';
     };
