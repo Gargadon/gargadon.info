@@ -28,6 +28,8 @@ import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { LogoutComponent } from './logout/logout.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { EntryComponent } from './entry/entry.component';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 var titulo = "Gargadon's Dungeon :: "
 
@@ -92,7 +94,11 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    // for Router use:
+    LoadingBarRouterModule,
+    // for Core use:
+    LoadingBarModule
   ],
   providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), SsrCookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration(withNoHttpTransferCache())],
   bootstrap: [AppComponent]
