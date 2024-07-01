@@ -30,6 +30,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { EntryComponent } from './entry/entry.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { CalculadoraComponent } from './proyectos/calculadora/calculadora.component';
 
 var titulo = "Gargadon's Dungeon :: "
 
@@ -47,6 +48,9 @@ const appRoutes: Routes = [
       },
       {
         path: 'dice', component: DiceComponent, title: titulo + "Dados"
+      },
+      {
+        path: 'calculadora', component: CalculadoraComponent, title: titulo + "Calculadora"
       },
       {
         path: 'login', component: Login2Component, title: titulo + "Login"
@@ -87,7 +91,8 @@ const appRoutes: Routes = [
     LoginComponent,
     Login2Component,
     LogoutComponent,
-    EntryComponent
+    EntryComponent,
+    CalculadoraComponent
   ],
   imports: [
     BrowserModule,
