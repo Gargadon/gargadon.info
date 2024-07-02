@@ -22,7 +22,7 @@ export class EntryComponent implements OnInit{
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private titleService: Title, private route: ActivatedRoute, private router: Router, private metaService: Meta, private entries: EntriesService, private markdownService: MarkdownService) {
     this.id = parseInt(this.route.snapshot.queryParams['id']);
     this.entries.recibirEntradaSingular(this.id).subscribe({
-      next: (data) => { this.entrada = data, console.log(this.entrada), this.title = data?.[0]?.title, console.log(this.title), this.titleService.setTitle(this.title); this.updateTag(); },
+      next: (data) => { this.entrada = data, this.title = data?.[0]?.title, this.titleService.setTitle(this.title); this.updateTag(); },
       error: (e) => console.error(e)
     });
 
