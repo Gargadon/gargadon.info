@@ -1,0 +1,20 @@
+<?php
+// Este es un archivo de ejemplo. Copie este archivo en este mismo
+// directorio y renómbrelo a db.php. Modifique los parámetros de conexión
+// a la base de datos y la clave SALT.
+
+// Parametros de conexion a la BD
+$host = '';
+$db_name = '';
+$db_user = '';
+$db_password = '';
+
+// La clave SALT, cambiar si es necesario
+$key = '';
+
+// Especificar si no se requiere llamar desde otro dominio, dejar en *
+// si la conexión se hará remotamente.
+$allow_origin = '*';
+
+// No cambiar esta línea de código
+$dsn = 'mysql:host=' . $host . ';dbname=' . $db_name;
