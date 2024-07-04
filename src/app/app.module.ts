@@ -31,6 +31,7 @@ import { EntryComponent } from './entry/entry.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { CalculadoraComponent } from './proyectos/calculadora/calculadora.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 var titulo = "Gargadon's Dungeon :: "
 
@@ -103,7 +104,8 @@ const appRoutes: Routes = [
     // for Router use:
     LoadingBarRouterModule,
     // for Core use:
-    LoadingBarModule
+    LoadingBarModule,
+    NgbModule
   ],
   providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClient(withFetch()), SsrCookieService, ServicioEmpleadosService, DataServices, EmpleadosService, provideClientHydration(withNoHttpTransferCache())],
   bootstrap: [AppComponent]

@@ -1,177 +1,93 @@
-<p>
-  Esta pequeña calculadora primitiva es en realidad un port de una tarea que
-  realicé para la materia de "Tópicos Avanzados de Programación" de la UVEG.
-</p>
-<p>
-  Para esa materia, el lenguaje utilizado fue Java. En este caso se porteó todo
-  el código a Angular con TypeScript.
-</p>
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
       <div class="container">
         <div class="row">
           <div class="col-12 input-group input-group-lg text-center">
-            <input
-              type="text"
-              name="resultadoPantalla"
-              id="resultadoPantalla"
-              value="{{ display }}"
-              class="form-control"
-              disabled
-              aria-disabled="true"
-            />
+            <input type="text" name="resultadoPantalla" id="resultadoPantalla" value="{{ display }}"
+              class="form-control display" disabled aria-disabled="true" />
           </div>
         </div>
-        <form>
-          <div class="row">
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="7"
-                id="7"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('7')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="8"
-                id="8"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('8')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="9"
-                id="9"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('9')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="&#xF7;"
-                id="divide"
-                class="btn btn-primary btn-block"
-                (click)="operacion(4)"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="4"
-                id="4"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('4')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="5"
-                id="5"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('5')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="6"
-                id="6"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('6')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="&#215;"
-                id="multiplica"
-                class="btn btn-primary btn-block"
-                (click)="operacion(3)"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="1"
-                id="1"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('1')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="2"
-                id="2"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('2')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="3"
-                id="3"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('3')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="-"
-                id="resta"
-                class="btn btn-primary btn-block"
-                (click)="operacion(2)"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="C"
-                id="borra"
-                class="btn btn-danger btn-block"
-                (click)="clearDisplay()"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="0"
-                id="0"
-                class="btn btn-light btn-block"
-                (click)="appendToDisplay('0')"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="="
-                id="igual"
-                class="btn btn-success btn-block"
-                (click)="operacion(5)"
-              />
-            </div>
-            <div class="col-3 p-2">
-              <input
-                type="button"
-                value="+"
-                id="suma"
-                class="btn btn-primary btn-block"
-                (click)="operacion(1)"
-              />
-            </div>
+        <div class="row">
+          <div class="col-3 p-2 input-group-sm">
+            <input type="button" value="C" id="borra" class="btn btn-block btn-block-functions btn-danger"
+              (click)="clearDisplay()" />
           </div>
-        </form>
+          <div class="col-3 p-2 input-group-sm">
+            <button type="button" class="btn btn-block btn-block-functions btn-info" (click)="negative()"><i
+                class="bi bi-plus-slash-minus"></i>
+            </button>
+          </div>
+          <div class="col-3 p-2 input-group-sm">
+            <button type="button" class="btn btn-block btn-block-functions btn-info" placement="top"
+              ngbPopover="Copiado" triggers="click" (click)="copy()">
+              <i class="bi bi-copy"></i>
+            </button>
+          </div>
+          <div class="col-3 p-2 input-group-sm">
+            <button type="button" class="btn btn-block btn-block-functions btn-info" (click)="borrarTexto()"><i
+                class="bi bi-backspace-fill"></i></button>
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="7" id="7" class="btn btn-light btn-block" (click)="appendToDisplay('7')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="8" id="8" class="btn btn-light btn-block" (click)="appendToDisplay('8')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="9" id="9" class="btn btn-light btn-block" (click)="appendToDisplay('9')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="&#xF7;" id="divide" class="btn btn-primary btn-block" (click)="operacion(4)" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="4" id="4" class="btn btn-light btn-block" (click)="appendToDisplay('4')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="5" id="5" class="btn btn-light btn-block" (click)="appendToDisplay('5')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="6" id="6" class="btn btn-light btn-block" (click)="appendToDisplay('6')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="&#215;" id="multiplica" class="btn btn-primary btn-block"
+              (click)="operacion(3)" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="1" id="1" class="btn btn-light btn-block" (click)="appendToDisplay('1')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="2" id="2" class="btn btn-light btn-block" (click)="appendToDisplay('2')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="3" id="3" class="btn btn-light btn-block" (click)="appendToDisplay('3')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="-" id="resta" class="btn btn-primary btn-block" (click)="operacion(2)" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="." id="punto" class="btn btn-info btn-block" (click)="appendToDisplay('.')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="0" id="0" class="btn btn-light btn-block" (click)="appendToDisplay('0')" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="=" id="igual" class="btn btn-success btn-block" (click)="operacion(5)" />
+          </div>
+          <div class="col-3 p-2 input-group-lg">
+            <input type="button" value="+" id="suma" class="btn btn-primary btn-block" (click)="operacion(1)" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<p>
+  Esta pequeña calculadora primitiva es en realidad un port de una tarea que
+  realicé para la materia de "Tópicos Avanzados de Programación" de la UVEG.
+</p>
+<p>
+  Para esa materia, el lenguaje utilizado fue Java. En este caso se porteó todo
+  el código a Angular con TypeScript y se han agregado más funciones como copiado
+  del número y cambio de signo.
+</p>

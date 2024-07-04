@@ -1,5 +1,14 @@
 .btn-block {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-  }
-  
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.btn-block-functions {
+  aspect-ratio: 2 / 1;
+}
+
+.display {
+  font-weight: bold;
+  font-size: 2em;
+  text-align: right;
+}

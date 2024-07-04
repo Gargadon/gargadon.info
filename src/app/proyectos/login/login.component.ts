@@ -22,12 +22,11 @@ export class Login2Component {
   }
 
   async hola() {
-    // = await this.usersService.isUserLogged();
     this.infoLogin = await this.usersService.getUser();
     this.logueado = this.infoLogin?.logged;
-    this.userID = this.infoLogin?.data?.[0]?.id;
-    this.userName = this.infoLogin?.data?.[1]?.username;
-    this.userMail = this.infoLogin?.data?.[2]?.email;
-    this.avatarUser = this.infoLogin?.data?.[3]?.avatar;
+    this.userID = this.infoLogin?.data?.id;
+    this.userName = this.infoLogin?.data?.username;
+    this.userMail = this.infoLogin?.data?.email;
+    this.avatarUser = this.infoLogin?.data?.avatar;
   }
 }
