@@ -6,64 +6,65 @@ require 'db.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$error = '';
-
 header("Access-Control-Allow-Origin: " . $allow_origin);
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: POST");
 header("Allow: POST");
-
-if (strtoupper($_SERVER['REQUEST_METHOD']) != 'POST') {
-	throw new Exception('Only POST requests are allowed');
-}
-
 header("Content-Type: application/json");
-$connect = new PDO($dsn, $db_user, $db_password);
-$data = json_decode(file_get_contents('php://input'), true);
-$objeto = new stdClass();
-$id = '';
-$username = '';
 
-if (!empty($data)) {
-	try {
-		$decoded = JWT::decode($data['token'], new Key($key, 'HS256'));
-		$id = $decoded->data->id;
-		$username = $decoded->data->username;
-		$nbf = $decoded->nbf;
-		$exp = $decoded->exp;
-		if ($nbf > time() || $exp < time()) {
-			$objeto->logged = true;
-			$objeto->error = 'Invalid token';
-		} else {
-			// Compruebo en la BD que el usuario existe
-			$query = "SELECT * FROM users WHERE username = ?";
-			$statement = $connect->prepare($query);
-			$statement->execute([$username]);
-			$data = $statement->fetch(PDO::FETCH_ASSOC);
-			if ($data['id'] == $id) {
-				$avatar = $data['avatar'];
-				// Solo para mostrar usuarios
-				$objeto->logged = true;
-				$objeto->data = array(
-					array('id' => $id),
-					array('username' => $username),
-					array('email' => $data['email']),
-					array('avatar' => $avatar),
-					array('nbf' => $nbf),
-					array('exp' => $exp)
-				);
-			} else {
-				$objeto->logged = false;
-				$objeto->error = 'Invalid user';
-			}
-		}
-	} catch (exception $e) {
-		$objeto->logged = false;
-		$objeto->error = 'Invalid user';
-	}
-} else {
-	$objeto->logged = false;
-	$objeto->error = 'User not logged';
+try {
+    if (strtoupper($_SERVER['REQUEST_METHOD']) != 'POST') {
+        throw new Exception('Only POST requests are allowed');
+    }
+
+    $connect = new PDO($dsn, $db_user, $db_password);
+    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $data = json_decode(file_get_contents('php://input'), true);
+    $response = new stdClass();
+
+    if (empty($data) || empty($data['token'])) {
+        throw new Exception('User not logged in');
+    }
+
+    $decoded = JWT::decode($data['token'], new Key($key, 'HS256'));
+    $id = $decoded->data->id;
+    $username = $decoded->data->username;
+    $nbf = $decoded->nbf;
+    $exp = $decoded->exp;
+
+    if ($nbf > time() || $exp < time()) {
+        throw new Exception('Invalid token');
+    }
+
+    // Verify user in the database
+    $query = "SELECT * FROM users WHERE username = :username";
+    $statement = $connect->prepare($query);
+    $statement->bindParam(':username', $username, PDO::PARAM_STR);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && $user['id'] == $id) {
+        $response->logged = true;
+        $response->data = array(
+            'id' => $user['id'],
+            'username' => $user['username'],
+            'email' => $user['email'],
+            'avatar' => $user['avatar'],
+            'nbf' => $nbf,
+            'exp' => $exp
+        );
+    } else {
+        throw new Exception('Invalid user');
+    }
+
+    echo json_encode($response);
+
+} catch (Exception $e) {
+    $errorResponse = new stdClass();
+    $errorResponse->logged = false;
+    $errorResponse->error = $e->getMessage();
+    echo json_encode($errorResponse);
 }
-$json = json_encode($objeto);
-echo $json;
+
+?>

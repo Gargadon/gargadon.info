@@ -43,3 +43,6 @@ Thumbs.db
 
 # API keys
 /src/api/db.php
+/src/api/composer.lock
+/src/api/composer.phar
+/src/api/vendor
